@@ -11,6 +11,13 @@ $pageData->addCSS("css/blog.css");
 //load navigation
 $pageData->content = include_once "views/admin/admin-navigation.php";
 
+//make new PDO object to connect to database
+$dbInfo = "mysql:host=localhost;dbname=simple_blog";
+$dbUser = "root";
+$dbPassword = "";
+$db = new PDO( $dbInfo, $dbUser, $dbPassword);
+$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
 $navigationIsClicked = isset( $_GET['page']);
 if ( $navigationIsClicked ) {
     //prepare to load corresponding controller

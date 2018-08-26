@@ -8,24 +8,17 @@ class Blog_Entry_Table {
     }
 
     public function saveEntry ( $title, $entry ) {
-
         //notice placeholders in SQL string. ? is a placeholder
         //notice the order of attributes: first title, next entry_text
         $entrySQL = "INSERT INTO blog_entry ( title, entry_text )
                      VALUES ( ?, ? )";
-        $entryStatement = $this->db->prepare( $entrySQL );
         //create an array with dynamic data
         //Order is important: $title must come first, $entry second
         $formData = array( $title, $entry );
 
-    try{
-        //pass $formData as argument to execute
-        $entryStatement->execute( $formData );
-    } catch (Exception $e){
-        $msg = "<p>You tried to run this sql: $entrySQL<p>
-               <p>Exception: $e</p>";
-        trigger_error($msg);
-        }
+        //$this is the object's way of saying my
+        //$this->makestatement calls makeStatement of Blog_Entry_Table
+        $entryStatement = $this->makestatement( $entrySQL, $formData );
     }
 
     public function getAllEntries() {

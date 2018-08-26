@@ -43,4 +43,20 @@ class Blog_Entry_Table {
         }
         return $statement;
     }
+
+    public function getEntry( $id ) {
+        $sql = "SELECT entry_id, title, entry_text, date_created FROM blog_entry WHERE entry_id = ?";
+        $statement = $this->db->prepare( $sql );
+        $data = array( $id );
+
+        try {
+            $statement->execute( $data );
+        } catch ( Exception $e ) {
+            $exceptionMessage = "<p>You tried to run this sql: $sql</p>
+                                 <p>Exception: $e</p>";
+            trigger_error( $exceptionMessage );
+        }
+        $model = $statement->fetchObject();
+        return $model;
+    }
 }

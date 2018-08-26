@@ -59,4 +59,19 @@ class Blog_Entry_Table {
         $model = $statement->fetchObject();
         return $model;
     }
+
+    public function makestatement ( $sql, $data ) {
+        //create a PDOStatement object
+        $statement = $this->db->prepare( $sql );
+        try {
+            //use dynamic data and run the query
+            $statement->execute( $data );
+        } catch ( Exception $e ) {
+            $exceptionMessage = "<p>You tried to run this sql: $sql</p>
+                                 <p>Exception: $e</p>";
+            trigger_error( $exceptionMessage );
+        }
+        //return the PDOStatement object
+        return $statement;
+    }
 }

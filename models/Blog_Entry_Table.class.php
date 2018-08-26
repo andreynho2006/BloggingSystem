@@ -41,7 +41,7 @@ class Blog_Entry_Table {
         return $model;
     }
 
-    public function makeStatement ( $sql, $data = NULL ) {
+    private function makeStatement ( $sql, $data = NULL ) {
         //create a PDOStatement object
         $statement = $this->db->prepare( $sql );
         try {

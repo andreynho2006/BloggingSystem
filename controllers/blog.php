@@ -14,8 +14,8 @@ $isEntryClicked = isset( $_GET['id'] );
 
 if ( $isEntryClicked ) {
     //show one entry ... soon
-    $entriId = $_GET['id'];
-    $blogOutput = "will soon show entry with entry_id = \$entryId";
+    $entryId = $_GET['id'];
+    $blogOutput = "will soon show entry with entry_id = $entryId";
 } else {
     //list all entries
     //$entries is the PDOStatement returned from getAllEntries

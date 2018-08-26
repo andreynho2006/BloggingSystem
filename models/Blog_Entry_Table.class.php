@@ -49,18 +49,13 @@ class Blog_Entry_Table {
         $statement = $this->db->prepare( $sql );
         $data = array( $id );
 
-        try {
-            $statement->execute( $data );
-        } catch ( Exception $e ) {
-            $exceptionMessage = "<p>You tried to run this sql: $sql</p>
-                                 <p>Exception: $e</p>";
-            trigger_error( $exceptionMessage );
-        }
+        //call the new makeStatement method
+        $statement = $this->makeStatement( $sql, $data );
         $model = $statement->fetchObject();
         return $model;
     }
 
-    public function makestatement ( $sql, $data ) {
+    public function makeStatement ( $sql, $data ) {
         //create a PDOStatement object
         $statement = $this->db->prepare( $sql );
         try {

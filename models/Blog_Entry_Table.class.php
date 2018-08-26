@@ -25,15 +25,8 @@ class Blog_Entry_Table {
 
         $sql = "SELECT entry_id, title, SUBSTRING(entry_text, 1, 150) AS intro FROM blog_entry";
 
-        $statement = $this->db->prepare( $sql );
+        $statement = $this->makeStatement( $sql );
 
-        try {
-            $statement->execute();
-        } catch ( Exception $e ) {
-            $exceptionMessage = "<p>You tried to run this sql: $sql</p>
-                                 <p>Exception: $e</p>";
-            trigger_error( $exceptionMessage );
-        }
         return $statement;
     }
 
@@ -48,7 +41,7 @@ class Blog_Entry_Table {
         return $model;
     }
 
-    public function makeStatement ( $sql, $data ) {
+    public function makeStatement ( $sql, $data = NULL ) {
         //create a PDOStatement object
         $statement = $this->db->prepare( $sql );
         try {

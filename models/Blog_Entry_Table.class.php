@@ -20,7 +20,7 @@ class Blog_Entry_Table {
         //$this->makestatement calls makeStatement of Blog_Entry_Table
         $entryStatement = $this->makestatement( $entrySQL, $formData );
         //return the entry_id of the saved entry
-        return $this->db->lastInsertedId();
+        return $this->db->lastInsertId();
     }
 
     public function getAllEntries() {

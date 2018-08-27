@@ -8,6 +8,7 @@ if ( $entryDataFound === false ) {
     $entryData->entry_id = 0;
     $entryData->title = "";
     $entryData->entry_text = "";
+    $entryData->message = "";
 }
 
 //change object properties in <input> and <textarea>
@@ -25,6 +26,7 @@ return "
         <fieldset id='editor-buttons'>
             <input type='submit' name='action' value='save' />
             <input type='submit' name='action' value='delete' />
+            <p id='editor-message'>$entryData->message</p>
         </fieldset>
     </fieldset>
 </form>

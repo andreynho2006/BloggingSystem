@@ -13,7 +13,7 @@ if ( $entryDataFound === false ) {
 //change object properties in <input> and <textarea>
 return "
 <form method='post' action='admin.php?page=editor' id='editor'>
-    <input type='hidden' name='id' value='$enryData->entry_id' />
+    <input type='hidden' name='id' value='$entryData->entry_id' />
     <fieldset>
         <legend>New entry submission</legend>
         <label>Title</label>

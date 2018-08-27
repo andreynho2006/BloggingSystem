@@ -22,6 +22,15 @@ if ( $editorSubmitted ) {
     }
 }
 
+$entryRequested = isset( $_GET['id']);
+//create a new if statement
+if ( $entryRequested ) {
+    $id = $_GET['id'];
+    //load model of existing entry
+    $entryData = $entryTable->getEntry( $id );
+    $entryData->entry_id = $id;
+}
+
 //load relevant view
 $editorOutput = include_once "views/admin/editor-html.php";
 

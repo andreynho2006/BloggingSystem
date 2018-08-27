@@ -8,6 +8,7 @@ include_once "models/Page_Data.class.php";
 $pageData = new Page_Data();
 $pageData->title = "PHP/MySQL blog";
 $pageData->addCSS("css/blog.css");
+$pageData->addScript("js/editor.js");
 //load navigation
 $pageData->content = include_once "views/admin/admin-navigation.php";
 

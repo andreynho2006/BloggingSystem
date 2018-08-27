@@ -19,7 +19,7 @@ return "
         <legend>New entry submission</legend>
         <label>Title</label>
         <input type='text' name='title' maxlength='150' value='$entryData->title' required/>
-
+        <p id='title-warning'></p>
         <label>Entry</label>
         <textarea name='entry'>$entryData->entry_text</textarea>
 

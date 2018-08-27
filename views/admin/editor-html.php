@@ -18,7 +18,7 @@ return "
     <fieldset>
         <legend>New entry submission</legend>
         <label>Title</label>
-        <input type='text' name='title' maxlength='150' value='$entryData->title' />
+        <input type='text' name='title' maxlength='150' value='$entryData->title' required/>
 
         <label>Entry</label>
         <textarea name='entry'>$entryData->entry_text</textarea>

@@ -13,12 +13,19 @@ if ( $editorSubmitted ) {
 
     //was "save" button clicked
     $insertNewEntry = ( $buttonClicked === 'save' );
+    //was "delete" button clicked
+    $deleteEntry = ( $buttonClicked === 'delete');
+    //get the entry id from the hidden input in editor form
+    $id = $_POST['id'];
+
     if ( $insertNewEntry ) {
         //get title and entry data from editor form
         $title = $_POST['title'];
         $entry = $_POST['entry'];
         //save the new entry
         $entryTable->saveEntry( $title, $entry );
+    } else if ( $deleteEntry ) {
+        $entryTable->deleteEntry( $id );
     }
 }
 

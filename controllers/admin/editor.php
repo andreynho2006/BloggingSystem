@@ -12,18 +12,29 @@ if ( $editorSubmitted ) {
     $buttonClicked = $_POST['action'];
 
     //was "save" button clicked
-    $insertNewEntry = ( $buttonClicked === 'save' );
-    //was "delete" button clicked
-    $deleteEntry = ( $buttonClicked === 'delete');
+    $save = ( $buttonClicked === 'save' );
     //get the entry id from the hidden input in editor form
     $id = $_POST['id'];
 
+    //if id = 0 the editor was empty
+    //so user tries to save a new entry
+    $insertNewEntry = ( $save and $id === '0');
+    //was "delete" button clicked
+    $deleteEntry = ( $buttonClicked === 'delete');
+
+    //if $insertNewEntry is false you know that entry_id was NOT 0; that happens when an existing entry was displayed in editor(user tries to save an existing entry)
+    $updateEntry = ( $save and $insertNewEntry === false );
+
+    //get the title and entry data from editor form
+    $title = $_POST['title'];
+    $entry = $_POST['entry'];
+    
+    
+
     if ( $insertNewEntry ) {
-        //get title and entry data from editor form
-        $title = $_POST['title'];
-        $entry = $_POST['entry'];
-        //save the new entry
         $entryTable->saveEntry( $title, $entry );
+    } else if ( $updateEntry ) {
+        $entryTable->updateEntry ( $id, $title, $entry );
     } else if ( $deleteEntry ) {
         $entryTable->deleteEntry( $id );
     }

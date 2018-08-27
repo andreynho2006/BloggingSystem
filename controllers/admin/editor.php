@@ -50,6 +50,15 @@ if ( $entryRequested ) {
     //load model of existing entry
     $entryData = $entryTable->getEntry( $id );
     $entryData->entry_id = $id;
+    $entryData->message = "";
+}
+
+//new code below: an entry was saved or updated
+$entrySaved = isset ( $saveEntryId );
+if ( $entrySaved ) {
+    $entryData = $entryTable->getEntry( $saveEntryId );
+    //display a confirmation message
+    $entryData->message = "Entry was saved";
 }
 
 //load relevant view

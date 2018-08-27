@@ -32,9 +32,12 @@ if ( $editorSubmitted ) {
     
 
     if ( $insertNewEntry ) {
-        $entryTable->saveEntry( $title, $entry );
+        $saveEntryId = $entryTable->saveEntry( $title, $entry );
     } else if ( $updateEntry ) {
         $entryTable->updateEntry ( $id, $title, $entry );
+        //in case an entry was updated
+        //overwrite the variable with the id of the updated entry
+        $saveEntryId = $id;
     } else if ( $deleteEntry ) {
         $entryTable->deleteEntry( $id );
     }

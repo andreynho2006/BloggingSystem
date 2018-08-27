@@ -17,6 +17,9 @@ if ( $isEntryClicked ) {
     $entryId = $_GET['id'];
     $entryData = $entryTable->getEntry( $entryId );
     $blogOutput = require_once "views/entry-html.php";
+
+    //load the comments
+    $blogOutput .= include_once "controllers/comments.php";
 } else {
     //list all entries
     //$entries is the PDOStatement returned from getAllEntries

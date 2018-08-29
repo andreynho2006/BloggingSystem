@@ -14,6 +14,9 @@ $dbPassword = "";
 $db = new PDO( $dbInfo, $dbUser, $dbPassword );
 $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
+//include search view before the blog controller
+$pageData->content .= include_once "views/search-form-html.php";
+
 //include blog controller
 $pageData->content .=include_once "controllers/blog.php";
 

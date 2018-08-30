@@ -12,6 +12,7 @@ class Uploader {
     public function __construct ( $key ) {
         $this->filename = $_FILES[$key]['name'];
         $this->fileData = $_FILES[$key]['tmp_name'];
+        $this->errorCode = ( $FILES[$key]['error'] );
     }
 
     public function saveIn( $folder ) {

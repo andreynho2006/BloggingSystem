@@ -21,14 +21,14 @@ class Uploader {
 
     public function save() {
         $folderIsWriteAble = is_writable( $this->destination);
-        if ( $folderIsWriteAble ) {
-            $name = "$this->destination/$this->filename";
-            $succes = move_uploaded_file($this->fileData, $name);
+        if ( $this->readyToUpload() ) {
+            move_uploaded_file( $this->fileData, "$this->destination/$this->filename" );
         } else {
-            trigger_error("cannot write to $this->destination");
-            $succes = false;
+            //if not create an exception - pass error message as argument
+            $exc = new Exception( $this->errorMessage );
+            //throw the exception
+            throw $exc;
         }
-        return $succes;
     }
 
     private function readyToUpload() {

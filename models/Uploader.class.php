@@ -4,6 +4,10 @@ class Uploader {
     private $filename;
     private $fileData;
     private $destination;
+    //property for an error message
+    private $errorMessage;
+    //property for a standars error code
+    private $errorCode;
 
     public function __construct ( $key ) {
         $this->filename = $_FILES[$key]['name'];

@@ -1,4 +1,4 @@
 <?php
 
-$imageManagerHTML = "Image manager commin soon!";
+$imageManagerHTML = include_once "views/admin/images-html.php";
 return $imageManagerHTML;

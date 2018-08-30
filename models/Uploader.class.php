@@ -30,4 +30,19 @@ class Uploader {
         }
         return $succes;
     }
+
+    private function readyToUpload() {
+        $folderIsWriteAble === is_writable( $this->destination );
+        if( $folderIsWriteAble === false ) {
+            //provide a meaninful error message
+            $this->errorMessage = "Error: destination folder is: ";
+            $this->errorMessage .= "not writable, change permission";
+            //indicate that code is NOT ready to upload file
+            $canUpload = false;
+        } else {
+            //assume no errors - indicate we're ready to upload
+            $canUpload = true;
+        }
+        return $canUpload;
+    }
 }

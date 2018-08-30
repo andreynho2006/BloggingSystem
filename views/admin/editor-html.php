@@ -30,4 +30,10 @@ return "
         </fieldset>
     </fieldset>
 </form>
-";
+<script type='text/javascript' src='js/tinymce/tinymce.min.js'></script>
+<script type='text/javascript'>
+tinymce.init({
+    selector: 'textarea',
+    plugin: 'image'
+});
+</script>";

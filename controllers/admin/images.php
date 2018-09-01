@@ -21,5 +21,13 @@ if ( $imageSubmitted ) {
     }
 }
 
+//if a delete link was clicked
+$deleteImage = isset ( $_GET['delete-image'] );
+if ( $deleteImage ) {
+    //grab teh src of the image to delete
+    $whichImage = $_GET['delete-image'];
+    unlink($whichImage);
+} 
+
 $imageManagerHTML = include_once "views/admin/images-html.php";
 return $imageManagerHTML;

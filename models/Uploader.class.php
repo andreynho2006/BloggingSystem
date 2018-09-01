@@ -39,6 +39,11 @@ class Uploader {
             $this->errorMessage .= "not writable, change permission";
             //indicate that code is NOT ready to upload file
             $canUpload = false;
+        } else if ( $this->errorCode === 1 ){
+            $maxSize = init_get( 'uploaded_max_filesize' );
+            $this->errorMessage = "Error: File is too big. ";
+            $this->errorMessage .= "Max file size is $maxSize";
+            $canUpload = false;
         } else {
             //assume no errors - indicate we're ready to upload
             $canUpload = true;

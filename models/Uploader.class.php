@@ -44,6 +44,10 @@ class Uploader {
             $this->errorMessage = "Error: File is too big. ";
             $this->errorMessage .= "Max file size is $maxSize";
             $canUpload = false;
+        } else if ( $this->errorCode > 1 ){
+            $this->errorMessage = "Something went wrong ";
+            $this->errorMessage .= "Error: $this->errorCode";
+            $canUpload = false;
         } else {
             //assume no errors - indicate we're ready to upload
             $canUpload = true;

@@ -3,6 +3,9 @@ function init() {
     var title = document.querySelector("input[name='title'");
     //this will prevent standard browser treatment of the required attribute
     title.required = false;
+
+    title.addEventListener("keyup", updateEditorMessage, false);
+    
     editorForm.addEventListener("submit", checkTitle, false);
 }
 
@@ -19,4 +22,8 @@ function checkTitle(event) {
         //display a warning
         warning.innerHTML = "*You must write a title for the entry";
     }
+}
+
+function updateEditorMessage () {
+    console.log( "editor changes not saved yet!" );
 }

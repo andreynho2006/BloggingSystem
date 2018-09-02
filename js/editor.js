@@ -5,7 +5,7 @@ function init() {
     title.required = false;
 
     title.addEventListener("keyup", updateEditorMessage, false);
-    
+
     editorForm.addEventListener("submit", checkTitle, false);
 }
 
@@ -25,5 +25,6 @@ function checkTitle(event) {
 }
 
 function updateEditorMessage () {
-    console.log( "editor changes not saved yet!" );
+    var p = document.querySelector("#editor-message");
+    p.innerHTML = "Changes not saved!";
 }

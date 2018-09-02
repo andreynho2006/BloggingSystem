@@ -1,5 +1,4 @@
 <?php
-
 //check if required data is available
 $entryDataFound = isset ( $entryData );
 if ( $entryDataFound === false ) {
@@ -34,6 +33,11 @@ return "
 <script type='text/javascript'>
 tinymce.init({
     selector: 'textarea',
-    plugin: 'image'
+    plugin: 'image',
+    setup: function (editor) {
+        editor.on('change', function(e) {
+            updatorMessage();
+        });
+    }
 });
 </script>";

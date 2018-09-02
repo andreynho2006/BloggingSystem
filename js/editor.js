@@ -4,8 +4,10 @@ function init() {
     //this will prevent standard browser treatment of the required attribute
     title.required = false;
 
-    title.addEventListener("keyup", updateEditorMessage, false);
+    var textarea = document.querySelector("form textarea");
+    textarea.addEventListener("keyup", updateEditorMessage, false);
 
+    title.addEventListener("keyup", updateEditorMessage, false);
     editorForm.addEventListener("submit", checkTitle, false);
 }
 

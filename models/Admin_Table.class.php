@@ -8,7 +8,7 @@ class Admin_Table extends Table {
         //check if email is available
         $this->checkEmail( $email );
         //encrypt password with md5
-        $sql = "INSERT INTO admin ( email, password ) VALUES ( ?, MD%(?) )";
+        $sql = "INSERT INTO admin ( email, password ) VALUES ( ?, MD5(?) )";
         $data = array ( $email, $password );
         $this->makeStatement( $sql, $data );
     }
